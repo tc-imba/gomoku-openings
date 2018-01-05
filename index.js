@@ -3,7 +3,7 @@ const MAX_OPENING = _package.openings;
 
 let openings = [];
 for (let i = 1; i <= MAX_OPENING; i++) {
-    openings.push(require(`openings/opening${i}.json`));
+    openings.push(require(`./openings/opening${i}.json`));
 }
 
 function check(num) {
@@ -33,7 +33,11 @@ module.exports = {
         }
         let result = [];
         for (let i = 0; i < num; i++) {
-            result.push(openings[data[i]]);
+            result.push({
+                id: data[i] + 1,
+                data: openings[data[i]]
+            });
         }
+        return result;
     }
 };
